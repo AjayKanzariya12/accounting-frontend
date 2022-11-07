@@ -37,13 +37,13 @@
                       totalItems: this.totalItems
                     }">
                     <td>{{ row.id }}</td>
-                    <td>{{ row.AdminName }}</td>
-                    <td>{{ row.mobile }}</td>
-                    <td>{{ row.Email }}</td>
-                    <td><img class="p-img" src="{{ url }}" /></td>
+                    <td>{{ row.name }}</td>
+                    <td>{{ row.phone }}</td>
+                    <td>{{ row.email }}</td>
+                    <td><img class="p-img" src="{{ row.photo }}" /></td>
                     <td>{{ row.password }}</td>
                     <!-- <td>{{ row.data }}</td> -->
-                    <td>{{ row.SuperAdmin }}</td>
+                    <td>{{ row.isSuperAdmin }}</td>
   
                     <td>
                       <button
@@ -101,7 +101,7 @@
                           <input
                             required
                             type="text"
-                            formControlName="AdminName"
+                            formControlName="name"
                             class="form-control"
                             id="exampleInputEmail1"
                             aria-describedby="emailHelp"
@@ -113,7 +113,7 @@
                           <label for="exampleInputPassword1">Mobile</label>
                           <input
                             type="text"
-                            formControlName="mobile"
+                            formControlName="phone"
                             class="form-control"
                             id="exampleInputPassword1"
                             placeholder="Enter Mobile No"
@@ -124,7 +124,7 @@
                           <label for="exampleInputEmail1">Email</label>
                           <input
                             type="text"
-                            formControlName="Email"
+                            formControlName="email"
                             class="form-control"
                             id="exampleInputEmail1"
                             aria-describedby="emailHelp"
@@ -139,7 +139,7 @@
                             class="form-control"
                             (change)="onselectfile($event)"
                             id="exampleInputEmail12"
-                            formControlName="url"
+                            formControlName="photo"
                             aria-describedby="emailHelp"
                             placeholder="select admin image"
                           />
@@ -161,8 +161,8 @@
                           
                         <div>
                           <label class="switch">
-                            <input type="checkbox" formControlName="SuperAdmin"
-                             id="myonoffswitch" [checked]="UserModelobj.SuperAdmin"
+                            <input type="checkbox" formControlName="isSuperAdmin"
+                             id="myonoffswitch" [checked]="UserModelobj.isSuperAdmin"
                             (change)="getSwitcherValue()">
                             <span class="slider round"></span>
                           </label>

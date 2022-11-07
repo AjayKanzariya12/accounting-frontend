@@ -27,13 +27,13 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.formvalue = this.formbuilder.group({
-      AdminName: ['', Validators.required],
-      mobile: ['', Validators.required],
-      Email: ['', Validators.required],
-      url: ['', Validators.required],
+      name: ['', Validators.required],
+      phone: ['', Validators.required],
+      email: ['', Validators.required],
+      photo: ['', Validators.required],
       password: ['', Validators.required],
-      data: [''],
-      SuperAdmin: [''],
+      // data: [''],
+      isSuperAdmin: [''],
     });
     this.getAlluser();
   }
@@ -53,13 +53,13 @@ export class AdminComponent implements OnInit {
   }
 
   postuserdetails() {
-    this.UserModelobj.AdminName = this.formvalue.value.AdminName;
-    this.UserModelobj.mobile = this.formvalue.value.mobile;
-    this.UserModelobj.Email = this.formvalue.value.Email;
-    this.UserModelobj.url = this.formvalue.value.url;
+    this.UserModelobj.name = this.formvalue.value.name;
+    this.UserModelobj.phone = this.formvalue.value.phone;
+    this.UserModelobj.email = this.formvalue.value.email;
+    // this.UserModelobj.photo = this.formvalue.value.photo;
     this.UserModelobj.password = this.formvalue.value.password;
-    this.UserModelobj.data = this.formvalue.value.data;
-    this.UserModelobj.SuperAdmin =this.formvalue.value.SuperAdmin;
+    // this.UserModelobj.data = this.formvalue.value.data;
+    this.UserModelobj.isSuperAdmin =this.formvalue.value.isSuperAdmin;
 
     this.api.postdata(this.UserModelobj).subscribe(
       (res) => {
@@ -94,59 +94,59 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  ondeleteproduct(row: any) {
-    this.api.deleteproduct(row.id).subscribe((res) => {
-      Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire('Deleted!', 'product has been deleted.', 'success');
-        }
-      });
-      this.getAlluser();
+  ondeleteproduct(row : any){
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.api.deleteproduct(row._id).subscribe((res) => {
+          this.getAlluser();
+        });
+        Swal.fire("Deleted!", "Category has been deleted.", "success");
+      }
     });
   }
 
-  url!: '';
+  // url!: '';
   onselectfile(e: any) {
     if (e.target.files) {
       var reder = new FileReader();
       reder.readAsDataURL(e.target.files[0]);
       reder.onload = (event: any) => {
-        this.url = event.target.result;
+        this.UserModelobj.photo = event.target.result;
       };
     }
   }
 
   onedit(row: any) {
     this.update = true;
-    this.UserModelobj.id = row.id;
-    this.formvalue.controls['AdminName'].setValue(row.AdminName);
-    this.formvalue.controls['mobile'].setValue(row.mobile);
-    this.formvalue.controls['Email'].setValue(row.Email);
-    this.formvalue.controls['url'].setValue(row.url);
+    this.UserModelobj._id = row._id;
+    this.formvalue.controls['name'].setValue(row.name);
+    this.formvalue.controls['phone'].setValue(row.phone);
+    this.formvalue.controls['email'].setValue(row.email);
+    // this.formvalue.controls['photo'].setValue(row.photo);
     this.formvalue.controls['password'].setValue(row.password);
-    this.formvalue.controls['data'].setValue(row.data);
-    this.formvalue.controls['SuperAdmin'].setValue(row.SuperAdmin);
+    // this.formvalue.controls['data'].setValue(row.data);
+    this.formvalue.controls['isSuperAdmin'].setValue(row.isSuperAdmin);
   }
 
   updateUser() {
-    this.UserModelobj.AdminName = this.formvalue.value.AdminName;
-    this.UserModelobj.mobile = this.formvalue.value.mobile;
-    this.UserModelobj.Email = this.formvalue.value.Email;
-    this.UserModelobj.url = this.formvalue.value.url;
+    this.UserModelobj.name = this.formvalue.value.name;
+    this.UserModelobj.phone = this.formvalue.value.phone;
+    this.UserModelobj.email = this.formvalue.value.email;
+    // this.UserModelobj.photo = this.formvalue.value.photo;
     this.UserModelobj.password = this.formvalue.value.password;
-    this.UserModelobj.data = this.formvalue.value.data;
-    this.UserModelobj.SuperAdmin =this.formvalue.value.SuperAdmin;
+    // this.UserModelobj.data = this.formvalue.value.data;
+    this.UserModelobj.isSuperAdmin =this.formvalue.value.isSuperAdmin;
 
     this.api
-      .upadatproduct(this.UserModelobj, this.UserModelobj.id)
+      .upadatproduct(this.UserModelobj, this.UserModelobj._id)
       .subscribe((res) => {
         alert('User updated successfully');
         location.reload();
@@ -159,12 +159,12 @@ export class AdminComponent implements OnInit {
       });
   }
 
-  selectChangeHandler(event: any) {
-    this.UserModelobj.data = event.target.value;
-  }
+  // selectChangeHandler(event: any) {
+  //   this.UserModelobj.data = event.target.value;
+  // }
 
   getSwitcherValue() {
-    this.UserModelobj.SuperAdmin = !this.UserModelobj.SuperAdmin;
-    console.log('onoffswitch:' + this.UserModelobj.SuperAdmin);
+    this.UserModelobj.isSuperAdmin = !this.UserModelobj.isSuperAdmin;
+    console.log('onoffswitch:' + this.UserModelobj.isSuperAdmin);
   }
 }

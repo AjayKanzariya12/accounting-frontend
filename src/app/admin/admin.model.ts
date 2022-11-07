@@ -1,15 +1,13 @@
 export class AdminModel{
-    id :number =0;
-    AdminName :string ='';
-    mobile :string ='';
-    Email :string ='';
-    image :string ='';
-    url !:"";
-    password:any;
-    // sub:any; 
-    data:any;
-
-  SuperAdmin:boolean=true;
+    id :number ;
+    name :string ='';
+    phone :string ='';
+    email :string ='';
+    // image :string ='';
+    photo :string ='';
+    password:any;  
+    _id:string;
+    isSuperAdmin:boolean=true;
     
 
 }
