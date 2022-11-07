@@ -1,0 +1,126 @@
+{
+  "account": [
+    {
+      "id": 1,
+      "AccountantName": "wds",
+      "mobile": "52321672",
+      "Email": "ajay@gmail.com",
+      "image": "",
+      "data": null,
+      "url": "C:\\fakepath\\img3.jpg",
+      "password": null,
+      "sub": null
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "username": "",
+      "mobile": "",
+      "Email": "jonas2411@yahoo.com",
+      "image": "",
+      "type": "user",
+      "url": "",
+      "password": "123456"
+    }
+  ],
+  "admin": [
+    {
+      "id": 1,
+      "AdminName": "",
+      "mobile": "",
+      "Email": "jonas2411@yahoo.com",
+      "image": "",
+      "SuperAdmin": true,
+      "url": "",
+      "password": "123456",
+      "data": ""
+    }
+  ],
+  "company": [
+    {
+      "id": 1,
+      "username": "ss",
+      "category_id": "sds",
+      "user_id": "ss",
+      "image": "",
+      "status": "progress",
+      "url": "",
+      "country_id": "ss",
+      "accountant_id": "sds"
+    }
+  ],
+  "type": [
+    {
+      "id": 1,
+      "username": "",
+      "category_id": "",
+      "url": "C:\\fakepath\\img3.jpg"
+    },
+    {
+      "id": 2,
+      "typename": "we",
+      "color": "",
+      "url": ""
+    },
+    {
+      "id": 3,
+      "typename": "",
+      "color": "",
+      "url": ""
+    }
+  ],
+  "subscription": [
+    {
+      "id": 2,
+      "username": "wds",
+      "duration": "ss",
+      "price": "21",
+      "discription": "dsd"
+    },
+    {
+      "id": 3,
+      "username": "",
+      "duration": "",
+      "price": "",
+      "discription": ""
+    }
+  ],
+  "status": [
+    {
+      "id": 1,
+      "username": "sddsd"
+    },
+    {
+      "id": 2,
+      "username": ""
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "username": "ss"
+    },
+    {
+      "id": 2,
+      "username": ""
+    },
+    {
+      "id": 3,
+      "categoryname": ""
+    }
+  ],
+  "file": [
+    {
+      "id": 5,
+      "type_id": "212",
+      "user_id": "12",
+      "status_id": "",
+      "accountant_id": "",
+      "url": "C:\\fakepath\\img3.jpg"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

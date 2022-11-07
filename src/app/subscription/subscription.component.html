@@ -1,0 +1,209 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div>
+          <button
+          type="button"
+          data-toggle="modal"
+          data-target="#exampleModalLong"
+          class="btn btn-btn btn-info"
+        >
+          Add Subscription
+        </button>
+        <div class="row">
+          <div class="card-table">
+              <div class="card-product">
+                <table
+                  class="table table-responsive"
+                  class="table table-bordered table-sm table-striped m-10px"
+                >
+                  <thead style="text-align: center">
+                    <tr>
+                      <th>No</th>
+                      <th>name</th>
+                      <th>discription</th>
+                      <th>duration </th>
+                      <th>price</th>
+                      <!-- <th>accountant id</th>
+                      <th>country_id</th>
+                      <th>status</th> -->
+                      <th>action</th>
+                    </tr>
+                  </thead>
+                  <tbody style="text-align: center">
+                    <tr *ngFor="let row of Userdata | paginate
+                    : {
+                        itemsPerPage: this.itemsPerPage,
+                        currentPage: this.currentPage,
+                        totalItems: this.totalItems
+                      }">
+                      <td>{{ row.id }}</td>
+                      <td>{{ row.username }}</td>
+                      <td>{{ row.discription }}</td>
+                      <td>{{ row.duration }}</td>
+                      <td>{{ row.price }}</td>
+                     
+    
+                      <td>
+                        <button
+                          (click)="onedit(row)"
+                          type="button"
+                          id="edit-1"
+                          data-toggle="modal"
+                          data-target="#exampleModalLong"
+                          class="btn btn-primary"
+                        >
+                          edit
+                        </button>
+                        <button
+                          type="button"
+                          (click)="ondeleteproduct(row)"
+                          id="delete-1"
+                          class="btn btn-danger mx-3"
+                        >
+                          delete
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <pagination-controls (pageChange)="changePage($event)"></pagination-controls>
+    
+                <div
+                  class="modal fade"
+                  id="exampleModalLong"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="exampleModalLongTitle"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header" style="left: 190px">
+                        <h5 class="modal-title" id="exampleModalLongTitle">
+                          Add Subscription
+                        </h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+    
+                      <div class="modal-body">
+                        <form [formGroup]="formvalue">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">company name</label>
+                            <input
+                              required
+                              type="text"
+                              formControlName="username"
+                              class="form-control"
+                              id="exampleInputEmail1"
+                              aria-describedby="emailHelp"
+                              placeholder="Enter User name"
+                            />
+                          </div>
+    
+    
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">duration </label>
+                            <input
+                              type="text"
+                              formControlName="duration"
+                              class="form-control"
+                              id="exampleInputPassword1"
+                              placeholder="Enter duration"
+                            />
+                          </div>
+    
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">price</label>
+                            <input
+                              type="text"
+                              formControlName="price"
+                              class="form-control"
+                              id="exampleInputEmail1"
+                              aria-describedby="emailHelp"
+                              placeholder="Enter price"
+                            />
+                        </div>
+                        
+    
+    
+                        
+    
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">discription </label>
+                            <input
+                              type="text"
+                              formControlName="discription"
+                              class="form-control"
+                              id="exampleInputpassword"
+                              aria-describedby="emailHelp"
+                              placeholder="Enter discription"
+                            />
+                          </div>
+    
+                          <!-- <div class="form-group">
+                            <label for="exampleInputEmail123">select status :</label>
+  
+                            <select
+                              id="exampleInputEmail123"
+                              formControlName="status"
+                              (change)="selectChangeHandler($event)"
+                            >
+                              <option value="panding">panding</option>
+                              <option value="progress">in progress</option>
+                              <option value="complited">complited</option>
+    
+                            </select>
+                          </div> -->
+    
+                          <div class="modal-footer">
+                            <div *ngIf="!update">
+                              <button
+                                type="button"
+                                data-dismiss="modal"
+                                (show)="(add)"
+                                (click)="postuserdetails()"
+                                id="btn1"
+                                class="btn btn-success"
+                              >
+                                add
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                type="button"
+                                data-dismiss="modal"
+                                [hidden]="!update"
+                                (click)="updateUser()"
+                                id="btn2"
+                                class="btn btn-primary"
+                              >
+                                update
+                              </button>
+                            </div>
+                            <button
+                              type="button"
+                              id="btn3"
+                              class="btn btn-danger"
+                              data-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+  
