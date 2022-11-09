@@ -7,5 +7,5 @@ export class CompanyModel{
     country_id:any;
     accountant_id:any; 
     accountant_status:any;
-    _id:string = '';
+    _id:string ;
 }
