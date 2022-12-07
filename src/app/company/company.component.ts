@@ -89,6 +89,7 @@ export class CompanyComponent implements OnInit {
     })
     
     }
+    
     getAlluser(){
       const queryParams = {
         itemsPerPage: this.itemsPerPage,

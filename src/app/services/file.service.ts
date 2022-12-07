@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { environment } from 'environments/environment';
 
@@ -7,13 +7,16 @@ import { environment } from 'environments/environment';
   providedIn: 'root'
 })
 export class FileService {
+  token = localStorage.getItem('token');
 
   constructor(private http:HttpClient) { }
 
   postdata(data:any ): Observable<any> {
-
-   
-   return this.http.post(environment.BaseUrl+'/upload',data);
+    let httpHeaders = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    });
+   return this.http.post(environment.BaseUrl+'/upload',data , {headers:httpHeaders});
   }
   
   getdata(){  

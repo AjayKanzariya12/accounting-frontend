@@ -69,7 +69,7 @@ export class FileComponent implements OnInit {
 
 
 
-
+console.log(this.UserModelobj)
     this.api.postdata(this.UserModelobj)
     .subscribe(res =>{
       console.log(res);
